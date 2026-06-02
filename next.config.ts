@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
-  // i18n: {
-  //   locales: ["en", "fr"],
-  //   defaultLocale: "fr",
-  //   localeDetection: false,
-  // },
+  env: {
+    RUNWAYML_API_SECRET: process.env.RUNWAYML_API_SECRET,
+  },
 };
-
 export default nextConfig;
