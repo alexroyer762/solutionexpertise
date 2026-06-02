@@ -1,0 +1,38 @@
+{
+  "name": "solutionexpertise-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@formatjs/intl-localematcher": "^0.5.10",
+    "@runwayml/avatars-react": "^0.15.0",
+    "@runwayml/sdk": "^3.21.0",
+    "gsap": "^3.12.7",
+    "lucide-react": "^0.474.0",
+    "negotiator": "^1.0.0",
+    "next": "^16.2.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "resend": "^4.1.2",
+    "sass": "^1.83.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@netlify/plugin-nextjs": "^5.15.11",
+    "@types/negotiator": "^0.6.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/smoothscroll-polyfill": "^0.3.4",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "typescript": "^5"
+  }
+}

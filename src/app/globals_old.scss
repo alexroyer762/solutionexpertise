@@ -1,0 +1,198 @@
+@use "@/styles/variables" as vars;
+
+@font-face {
+  font-family: "prodisplay-first";
+  src: url("../styles/fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("opentype");
+}
+
+@font-face {
+  font-family: "prodisplay-second";
+  src: url("../styles/fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF") format("opentype");
+}
+
+@font-face {
+  font-family: "prodisplay-light";
+  src: url("../styles/fonts/prodisplay/SF-PRO-DISPLAY-LIGHT.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "prodisplay-third";
+  src: url("../styles/fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF") format("opentype");
+}
+
+@font-face {
+  font-family: "inter-regular";
+  src: url("../styles/fonts/inter/Inter-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "inter-medium";
+  src: url("../styles/fonts/inter/Inter-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "inter-light";
+  src: url("../styles/fonts/inter/Inter-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "inter-bold";
+  src: url("../styles/fonts/inter/Inter-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "inter-black";
+  src: url("../styles/fonts/inter/Inter-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: "inter-extra-bold";
+  src: url("../styles/fonts/inter/Inter-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "lts-reg";
+  src: url("../styles/fonts/lts/LTSuperiorSerif-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "lts-med";
+  src: url("../styles/fonts/lts/LTSuperiorSerif-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "lts-semib";
+  src: url("../styles/fonts/lts/LTSuperiorSerif-Semibold.otf") format("opentype");
+}
+@font-face {
+  font-family: "lts-bold";
+  src: url("../styles/fonts/lts/LTSuperiorSerif-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "lts-extrab";
+  src: url("../styles/fonts/lts/LTSuperiorSerif-ExtraBold.otf") format("opentype");
+}
+
+:root {
+  --first-font: "prodisplay-first";
+  --second-font: "prodisplay-second";
+  --third-font: "prodisplay-third";
+  --fourth-font: "prodisplay-light";
+
+  --primary-accent: #446fcd;
+  --secondary-accent: #f7f6f3;
+  --third-accent: #02142e;
+
+  --primary-font-accent: #041122;
+  --secondary-font-accent: #f6f8fd;
+}
+html {
+  scroll-behavior: smooth !important;
+}
+
+html,
+body {
+  height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  --background: vars.$background;
+  --foreground: vars.$foreground;
+  color: var(--primary-font-accent);
+  position: relative;
+}
+
+body {
+  color: vars.$foreground;
+  background: vars.$background;
+  font-family: "inter-regular", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  // height: 100%;
+  padding: 0;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+.pageContainer {
+  // z-index: 0;
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 5rem;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+  // border: 1px solid red;
+  flex-direction: row;
+}
+
+.section {
+  display: flex;
+  margin: 0rem 0;
+  padding: 2rem 0 0 0;
+}
+
+button {
+  font-family: "inter-medium", sans-serif;
+  font-size: 1rem;
+  border-radius: 0px;
+  margin-top: 1rem 1rem;
+  padding: 1rem 2rem;
+  border: 1px solid var(--primary-font-accent);
+  &:hover {
+    cursor: pointer;
+  }
+}
+.button-first {
+  // background: linear-gradient(to top, #3561c2, var(--primary-accent));
+  background: var(--primary-accent);
+  color: var(--secondary-font-accent);
+}
+.button-second {
+  // background: linear-gradient(to top, #d6d5d1, var(--secondary-accent));
+  background: var(--secondary-accent);
+  color: var(--primary-font-accent);
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+p {
+  font-size: 1.25rem;
+  color: var(--primary-font-accent);
+}
+
+.icon {
+  background-color: var(--secondary-accent);
+}

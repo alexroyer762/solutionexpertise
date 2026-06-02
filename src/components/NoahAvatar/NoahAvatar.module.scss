@@ -1,0 +1,285 @@
+@use "../../styles/variables.scss" as variables;
+
+/* ── Floating trigger button ── */
+.floatingBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.85rem 1.4rem;
+  background: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: "Inclusive Sans", "Poppins", sans-serif;
+  cursor: pointer;
+
+  box-shadow: 0 4px 20px rgba(48, 143, 98, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    background: #226e4a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(48, 143, 98, 0.5);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal ── */
+.modal {
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.25s ease;
+  /* Allow AvatarCall to fully expand with its controls */
+  max-height: 92vh;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Modal header ── */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--main-gradient);
+  color: white;
+  flex-shrink: 0;
+  gap: 0.75rem;
+}
+
+.modalTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.timer {
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.timerWarning {
+  background: rgba(239, 68, 68, 0.85);
+  animation: blink 1s ease infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.35);
+  animation: pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.35); }
+  50%       { box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.1);  }
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+}
+
+/* ── Call area ── */
+.callArea {
+  flex: 1;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+
+  /* Override AvatarCall defaults to match modal */
+  --avatar-radius: 0px;
+  --avatar-bg-connecting: #f4f7f5;
+
+  > * {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*
+   * globals.scss sets `button { padding: 0.75rem 2rem; font-family: ...!important }`.
+   * Runway's control buttons are 40×40px (box-sizing:border-box), so 2rem padding
+   * on each side = -24px content area → SVG icons are squished to nothing.
+   * We only override the two offending properties; everything else (display:flex,
+   * width/height, background, color) is left to Runway's own attribute selectors.
+   */
+  :global(button) {
+    padding: 0 !important;
+    font-family: inherit !important;
+  }
+}
+
+/* ── Loading & error states ── */
+.loadingState,
+.errorState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  color: var(--black400, #555);
+  text-align: center;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--second-color, #c9e7d7);
+  border-top-color: var(--main-color);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.retryBtn {
+  padding: 0.65rem 1.5rem;
+  background: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #226e4a;
+  }
+}
+
+/* ── Cooldown state ── */
+.cooldownIcon {
+  color: var(--main-color);
+  opacity: 0.8;
+}
+
+.cooldownTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--black900);
+  margin: 0;
+}
+
+.cooldownMsg {
+  color: var(--black400);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.cooldownTimer {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--main-color);
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ── */
+@media (max-width: variables.$breakpoint-mobile) {
+  .floatingBtn span {
+    display: none;
+  }
+
+  .floatingBtn {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .modal {
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+}

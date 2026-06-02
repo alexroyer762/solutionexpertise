@@ -1,0 +1,642 @@
+@use "../../styles/variables.scss" as variables;
+// /* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.1s ease-out forwards;
+}
+
+.heroContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  padding: 4rem 2rem;
+  min-height: fit-content !important;
+  position: relative;
+  z-index: 2;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.homeSection {
+  position: relative;
+  background: var(--main-gradient);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.616)
+    ),
+    url("/media/home-hero.jpg");
+  mask-image: linear-gradient(45deg, white 0%, transparent 0%);
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.homeText {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  h1 {
+    opacity: 0;
+    font-size: 5rem;
+    font-weight: 300;
+    span {
+      font-weight: 600;
+      display: inline-block;
+    }
+  }
+
+  h2 {
+    opacity: 0;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    //font-size: variables.$heading-small;
+    font-size: 1.75rem;
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 0;
+
+    button {
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+    }
+  }
+
+  .secondaryButton {
+    background: rgb(255, 255, 255);
+    color: var(--main-color);
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-family: "Inclusive Sans", "Poppins", sans-serif !important;
+
+    a {
+      color: var(--main-color);
+    }
+
+    &:hover {
+      background: rgb(240, 240, 240);
+    }
+  }
+
+  .submitCaseButton {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    font-family: "Inclusive Sans", "Poppins", sans-serif !important;
+
+    a {
+      color: white;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: white;
+    }
+  }
+}
+
+.fullScreen {
+  padding-top: 2rem;
+  min-height: 100vh;
+  text-align: center;
+}
+
+@keyframes productAnimation {
+  0%,
+  100% {
+    transform: translateY(15px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.homeSection .homeImage .imgBox {
+  max-width: 300px;
+  margin: auto;
+}
+
+.homeSection .homeImage .imgBox img {
+  width: 100%;
+  // animation: productAnimation 5s linear infinite;
+}
+
+.fullWidth {
+  margin: auto;
+}
+
+@keyframes productAnimation {
+  0%,
+  100% {
+    transform: translateY(15px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.servicesSection {
+  background: var(--white100);
+  position: relative;
+}
+
+.serviceItem {
+  margin: 1.5rem 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.serviceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+.serviceDescription {
+  margin-top: 0.75rem;
+  line-height: 1.5;
+  color: #333;
+  padding-left: 1rem;
+}
+
+/* CLIENTS SECTION */
+.clientsSection {
+  background: var(--main-gradient);
+  text-align: center;
+  h2 {
+    margin-bottom: 0rem;
+    color: var(--white);
+  }
+
+  .clientTypes {
+    display: flex;
+    justify-content: space-between;
+    max-width: 750px;
+    margin: 0 auto;
+    .clientType {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+
+      border-radius: 20%;
+      z-index: 1;
+      height: 10rem;
+      width: 10rem;
+      transition: all 0.3s ease;
+
+      border: 1px solid rgba(255, 255, 255, 0.8);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.03);
+        cursor: default !important;
+      }
+
+      span {
+        height: 2rem;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+/* TEAM SECTION */
+.teamSection {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
+    ),
+    url("/media/team-section.jpg");
+  background-size: cover;
+  background-position-y: 0;
+  text-align: center;
+}
+
+/* SPECIALTIES SECTION */
+.specialtiesSection {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--pattern-img);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: linear-gradient(45deg, black 0, transparent 50%);
+  }
+}
+
+.specialtiesList {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding-bottom: 3rem;
+  justify-content: center;
+}
+
+.specialtyItem {
+  opacity: 1;
+  height: 4rem;
+  background: var(--white);
+  padding: 0 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+
+  span {
+    color: var(--black400);
+    transition: color 0.3s ease;
+  }
+}
+
+/* Generic section text */
+.sectionText {
+  color: var(--primary-font-accent);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  flex: 0 0 100%;
+  max-width: 100%;
+  // margin-bottom: 40px;
+  text-align: center;
+}
+
+.sectionTitle .title {
+  font-weight: 600;
+  display: inline-block;
+  text-transform: uppercase;
+  color: var(--main-color);
+  z-index: 1;
+  position: relative;
+}
+
+.whiteTitle {
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+}
+
+.sectionTitle .subtitle {
+  color: var(--black900);
+  font-weight: 400;
+  margin: 1.5rem 0 3rem 0;
+  // border: 1px solid red;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+}
+
+// Update the decorative patterns with bolder lines
+.decorativePattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: none; // Removing the hero section pattern
+  pointer-events: none;
+  z-index: 1;
+}
+
+.servicesSection {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--pattern-img);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(180deg);
+    mask-image: linear-gradient(45deg, black 0, transparent 50%);
+  }
+}
+
+.clientsSection {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--pattern-img);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: linear-gradient(45deg, black 0, transparent 50%);
+  }
+}
+
+// Add subtle animation to the patterns
+@keyframes patternFloat {
+  0%,
+  100% {
+    transform: rotate(-15deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-15deg) translateY(10px);
+  }
+}
+
+// Enhanced service items styling
+.servicesAccordion {
+  position: relative;
+  z-index: 1;
+}
+
+.serviceItem {
+  background: var(--white);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    border-left: 4px solid var(--main-color);
+  }
+}
+
+.serviceHeader {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.serviceDescription {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--black400);
+  line-height: 1.6;
+}
+
+// Update existing sections with relative positioning
+.servicesSection,
+.clientsSection {
+  position: relative;
+  overflow: hidden;
+}
+
+// Enhanced services grid
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.serviceCard {
+  opacity: 1;
+  transform: translateY(0);
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .iconWrapper {
+    padding: 0.2rem;
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  h3 {
+    font-weight: 500;
+    height: 3rem;
+    color: var(--main-color);
+  }
+
+  p {
+    flex: 1;
+    color: var(--black400);
+    line-height: 1.6;
+  }
+
+  .arrowWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .arrow {
+      display: flex;
+      align-items: center;
+      color: var(--main-color);
+    }
+
+    .arrow {
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+  svg {
+    color: var(--main-color);
+  }
+  &:hover {
+    background: var(--main-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    h3,
+    p,
+    svg {
+      color: var(--white);
+    }
+  }
+
+  &:hover .arrow {
+    transform: translateX(1rem);
+  }
+}
+.serviceCard:hover {
+  transform: translateY(-0.2rem) !important;
+}
+
+// Media queries for responsiveness
+
+@media (max-width: 991px) {
+  .homeSection .homeText {
+    padding: 0 2rem;
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .homeSection .homeImage .imgBox {
+    max-width: 23.75rem;
+  }
+
+  .clientsSection {
+    .clientTypes {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .homeSection .homeText {
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .clientsSection {
+    .clientTypes {
+      transform: scale(1);
+      max-width: 450px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      .clientType {
+        span {
+          font-size: variables.$text-small-tablet;
+        }
+      }
+    }
+  }
+  .teamSection {
+    background-size: 130%;
+  }
+}
+@media (max-width: variables.$breakpoint-mobile) {
+  .serviceCard {
+    padding: 1rem;
+    .iconWrapper {
+      padding-top: 1rem;
+    }
+  }
+  .clientsSection {
+    .clientTypes {
+      max-width: 450px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      .clientType {
+        height: 35vw;
+        width: 35vw;
+        span {
+          font-size: variables.$text-small-tablet;
+        }
+      }
+    }
+  }
+  .teamSection {
+    background-size: 200%;
+  }
+}
+
+// Update the failGsap class as well
+.failGsap {
+  h1,
+  h2,
+  button {
+    opacity: 1 !important;
+  }
+  .backgroundImage {
+    opacity: 1 !important;
+    mask-image: linear-gradient(45deg, white 100%, transparent 100%) !important;
+  }
+}
+
+.modalHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    color: var(--main-color);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--black400);
+  }
+}

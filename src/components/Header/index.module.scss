@@ -1,0 +1,228 @@
+@use "../../styles/variables.scss" as variables;
+
+.navbar {
+  position: fixed;
+  top: 1rem;
+  width: calc(100% - 4rem);
+  margin: 0 2rem;
+  padding: 1rem;
+  padding-left: 2rem;
+  background-color: transparent;
+  border-radius: 1rem;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+
+  &.sticky {
+    background: var(--main-gradient);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &.hide {
+    top: -100%;
+  }
+
+  .container {
+    max-width: calc(var(--max-width) + 100px);
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .logo {
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.75rem;
+    .navItems {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      .navItem {
+        display: inline-block;
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.5rem;
+  }
+
+  .appointmentBtn {
+    background-color: transparent;
+    color: var(--white100);
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1.5px solid var(--white100);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background-color: var(--white100);
+      color: var(--main-color);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .navLink {
+    position: relative;
+    font-weight: 600;
+    color: var(--white);
+    padding: 0.5rem 0;
+    display: inline-block;
+  }
+
+  .submitCaseNavLink {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    padding: 0.35rem 0.85rem !important;
+    transition: background 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: white;
+    }
+  }
+
+  .mobileMenu,
+  .mobileMenuBtn,
+  .mobileAppointmentBtn,
+  .menuOverlay {
+    display: none;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 1100px) {
+    top: 0;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    padding: 1rem;
+    padding-left: 1.4rem;
+    .row {
+      position: relative;
+      z-index: 1000;
+    }
+    .menuOverlay {
+      display: block;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 998;
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .mobileMenu {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: 0;
+      padding: 2rem;
+      padding-top: 6rem;
+      background-color: var(--main-color);
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-align: left;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 1.5rem;
+      z-index: 999;
+      border-radius: 0 0 1rem 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobileNavItems {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .mobileNavItem {
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .mobileNavLink {
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .mobileAppointmentBtn {
+      background-color: var(--white);
+      width: 100%;
+      margin-top: 1rem;
+      a {
+        color: var(--main-color);
+      }
+    }
+
+    .active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .menu {
+      .navItems {
+        display: none;
+      }
+      .navItemBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .mobileMenuBtn {
+        display: flex;
+        justify-self: center;
+        background-color: transparent;
+        padding: 0.5rem;
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    padding: 0.6rem;
+    padding-left: 1.2rem;
+    .appointmentBtn {
+      display: none;
+    }
+    .mobileAppointmentBtn {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,242 @@
+@use "../../styles/variables.scss" as variables;
+
+.sectionPadding {
+  padding: 4rem 0;
+  border-top: 0.375rem solid var(--main-color);
+  @media (max-width: variables.$breakpoint-mobile) {
+    padding: 3rem 0;
+  }
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: auto;
+  color: var(--white);
+
+  .row {
+    display: flex;
+  }
+
+  .bottomText {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 0.625rem;
+    color: var(--white);
+    padding: 2rem 2rem 0 0;
+    justify-content: flex-end;
+  }
+
+  .bottomText a {
+    color: var(--white);
+    font-size: variables.$text-small;
+  }
+
+  .leftCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .rightCol {
+    display: flex;
+    gap: 5rem;
+
+    .footerSection {
+      width: auto;
+      display: flex;
+      gap: 0.875rem;
+      flex-direction: column;
+
+      a {
+        width: fit-content;
+        font-size: variables.$text-small;
+        color: var(--white);
+        opacity: 0.8;
+        &:hover {
+          color: var(--main-color);
+        }
+      }
+
+      p {
+        font-size: variables.$text-base;
+        color: var(--white);
+        opacity: 0.8;
+      }
+
+      p:nth-child(1) {
+        font-size: variables.$text-small;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .socialMedia {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.7rem;
+    a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: 0.3s;
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+  }
+
+  .footerBottom {
+    margin-top: 3rem;
+    padding-top: 1.6rem;
+    border-top: 0.0625rem solid var(--white100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    p {
+      margin: 0;
+      font-size: variables.$text-small;
+    }
+  }
+
+  .bottomLinks {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      font-size: variables.$text-small;
+      color: var(--white100);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  @media (max-width: 1100px) {
+    padding: 0 2rem;
+    .rightCol {
+      gap: 3rem;
+    }
+    .bottomLinks {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: variables.$breakpoint-tablet) {
+    .row {
+      gap: 2rem;
+    }
+
+    .leftCol {
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .rightCol {
+      gap: 2rem;
+      flex-direction: column;
+
+      .footerSection {
+        gap: 0.5rem;
+        p {
+          &:first-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .footerBottom {
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: center;
+
+      .bottomLinks {
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: center;
+      }
+    }
+
+    .icon {
+      margin-right: 6px;
+      width: 13px;
+      height: 13px;
+    }
+    .footerSection {
+      a {
+        font-size: variables.$text-small-tablet;
+      }
+
+      p {
+        font-size: variables.$text-base-tablet;
+      }
+
+      p:nth-child(1) {
+        font-size: variables.$text-small-tablet;
+      }
+    }
+    .bottomText a {
+      font-size: variables.$text-small-tablet;
+    }
+
+    .footerBottom {
+      p {
+        font-size: variables.$text-small-tablet;
+      }
+    }
+
+    .bottomLinks a {
+      font-size: variables.$text-small-tablet;
+    }
+  }
+
+  @media (max-width: variables.$breakpoint-mobile) {
+    .row {
+      flex-direction: column;
+    }
+    .leftCol {
+      gap: 1rem;
+    }
+    .socialMedia a {
+      font-size: 1rem;
+    }
+    .bottomText a {
+      font-size: variables.$text-small-mobile;
+    }
+
+    .footerSection {
+      a {
+        font-size: variables.$text-small-mobile;
+      }
+
+      p {
+        font-size: variables.$text-base-mobile;
+      }
+
+      p:nth-child(1) {
+        font-size: variables.$text-small-mobile;
+      }
+    }
+
+    .footerBottom {
+      p {
+        font-size: variables.$text-small-mobile;
+      }
+    }
+
+    .bottomLinks a {
+      font-size: variables.$text-small-mobile;
+    }
+  }
+}

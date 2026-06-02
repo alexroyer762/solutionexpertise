@@ -1,0 +1,83 @@
+.cookieConsent {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  z-index: 1000;
+  max-width: 90%;
+  width: 500px;
+  animation: slideUp 0.3s ease-out;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  p {
+    color: var(--black900);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+}
+
+.acceptButton {
+  background: var(--main-color);
+  color: white;
+
+  &:hover {
+    background: var(--hover-color);
+  }
+}
+
+.moreButton {
+  background: transparent;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+
+  &:hover {
+    background: rgba(48, 143, 98, 0.1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .cookieConsent {
+    bottom: 1rem;
+    padding: 1rem;
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .buttonGroup button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

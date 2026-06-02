@@ -1,0 +1,86 @@
+@use "../../../styles/variables.scss" as variables;
+
+.pageContainer {
+  min-height: 100vh;
+}
+
+.heroSection {
+  background: var(--main-gradient);
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--pattern-img);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+}
+
+.portalSection {
+  padding: 4rem 2rem;
+  background: var(--white100);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--pattern-img);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: linear-gradient(45deg, black 0, transparent 50%);
+  }
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .heroSection {
+    padding: 7rem 1.5rem 3rem;
+  }
+
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  .heroContent h1 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,229 @@
+@use "@/styles/variables" as variables;
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.heroSection {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+  }
+}
+.servicesPage {
+  width: 100%;
+  background: var(--white);
+  color: var(--black900);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--white);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+// Cards Section
+.cardsSection {
+  margin-top: -4rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+
+.serviceCard {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  background: var(--main-color-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+
+  svg {
+    color: var(--main-color);
+  }
+}
+
+// Info Section with Image
+.infoSection {
+  position: relative;
+  padding: 4rem 2rem;
+  background: var(--white100);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--pattern-img);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(180deg);
+    mask-image: linear-gradient(45deg, black 0, transparent 50%);
+  }
+}
+
+.infoWrapper {
+  display: flex;
+  gap: 4rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.imageColumn {
+  flex: 1;
+  min-width: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
+  }
+}
+
+.textColumn {
+  flex: 1;
+  min-width: 300px;
+}
+
+.textContent {
+  h2 {
+    margin-bottom: 2rem;
+    color: var(--main-color);
+  }
+}
+
+.infoTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoText {
+  line-height: 1.8;
+  color: var(--black400);
+}
+
+// Responsive adjustments
+@media (max-width: 991px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .cardsGrid {
+    gap: 1rem;
+    .serviceCard {
+      padding: 1rem;
+    }
+  }
+
+  .serviceCard {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  .heroSection {
+    height: 400px;
+  }
+
+  .heroContent {
+    padding: 0 1rem;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    .serviceCard {
+      padding: 1rem;
+    }
+  }
+
+  .infoWrapper {
+    flex-direction: column;
+  }
+  .infoSection {
+    padding-top: 0;
+  }
+  .imageColumn {
+    max-height: 100vw;
+    width: 100vw;
+    margin-left: calc(-1 * var(--infoSection-padding));
+    margin-right: calc(-1 * var(--infoSection-padding));
+  }
+}
