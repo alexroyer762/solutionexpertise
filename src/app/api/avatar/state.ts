@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 
-export const TOTAL_SECONDS = 120;
+export const TOTAL_SECONDS = 600; // 10 min (temporaire)
 export const COOLDOWN_MS   = 60 * 60 * 1000; // 1 hour
 
 interface IPRecord {
