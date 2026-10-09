@@ -6,7 +6,7 @@ import "@runwayml/avatars-react/styles.css";
 import styles from "./NoahAvatar.module.scss";
 
 const NOAH_ID = "e1aa926d-857e-42b9-833f-ce4429bebc70";
-const NOAH_ENABLED = true;
+const NOAH_ENABLED = false;
 
 interface SessionInfo {
   sessionId:      string;
