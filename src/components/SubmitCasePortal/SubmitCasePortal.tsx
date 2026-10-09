@@ -11,14 +11,14 @@ const labels = {
     loading: "Chargement du formulaire…",
     openBtn: "Ouvrir le portail →",
     notice:
-      "Notre portail Zoho Creator s'ouvre dans un nouvel onglet pour une meilleure expérience.",
+      "Notre portail s'ouvre dans un nouvel onglet pour une meilleure expérience.",
     iframeTitle: "Déposer un dossier – Portail SolutionExpertise",
   },
   en: {
     loading: "Loading the form…",
     openBtn: "Open the portal →",
     notice:
-      "Our Zoho Creator portal opens in a new tab for the best experience.",
+      "Our portal opens in a new tab for the best experience.",
     iframeTitle: "Submit a Case File – SolutionExpertise Portal",
   },
 };
