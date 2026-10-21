@@ -3,9 +3,17 @@ import type { RealtimeSessionRetrieveResponse } from '@runwayml/sdk/resources/re
 import { NextRequest } from 'next/server';
 import { getClientIP, getRecord } from '../state';
 
-const client = new Runway({ apiKey: process.env.RUNWAYML_API_SECRET });
-
 export async function POST(req: NextRequest) {
+  // Le client est créé ICI (pas en haut du fichier) : si la clé API manque,
+  // ça renvoie une erreur claire au lieu de faire planter le build/la
+  // fonction serverless (Next.js exécute ce module pendant "Collecting page
+  // data" au build, avant même qu'une requête n'arrive).
+  if (!process.env.RUNWAYML_API_SECRET) {
+    console.error('[Noah] RUNWAYML_API_SECRET manquante côté serveur');
+    return Response.json({ error: 'RUNWAYML_API_SECRET manquante côté serveur' }, { status: 500 });
+  }
+  const client = new Runway({ apiKey: process.env.RUNWAYML_API_SECRET });
+
   const ip  = getClientIP(req);
   const rec = getRecord(ip);
   const now = Date.now();
@@ -29,7 +37,7 @@ export async function POST(req: NextRequest) {
       avatar: { type: 'custom', avatarId },
     });
 
-    const session = await pollUntilReady(sessionId);
+    const session = await pollUntilReady(client, sessionId);
 
     return Response.json({
       sessionId,
@@ -42,7 +50,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-async function pollUntilReady(sessionId: string): Promise<RealtimeSessionRetrieveResponse.Ready> {
+async function pollUntilReady(client: Runway, sessionId: string): Promise<RealtimeSessionRetrieveResponse.Ready> {
   const deadline = Date.now() + 30_000;
 
   while (Date.now() < deadline) {
