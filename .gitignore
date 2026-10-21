@@ -43,5 +43,6 @@ next-env.d.ts
 .vscode
 notes.md
 *.yml
+!amplify.yml
 # Local Netlify folder
 .netlify
