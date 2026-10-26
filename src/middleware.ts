@@ -15,8 +15,12 @@ function getLocale(request: NextRequest): string | undefined {
   const locales: string[] = i18n.locales;
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-  return locale;
+  // Sans en-tête Accept-Language (robots, crawlers), Negotiator renvoie "*" et matchLocale lève une RangeError
+  try {
+    return matchLocale(languages, locales, i18n.defaultLocale);
+  } catch {
+    return i18n.defaultLocale;
+  }
 }
 
 export default async function middleware(request: NextRequest) {
