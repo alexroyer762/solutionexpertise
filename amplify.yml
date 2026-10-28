@@ -7,7 +7,7 @@ frontend:
     build:
       commands:
         # Amplify n'expose pas les variables d'env au runtime SSR : on les écrit dans .env.production pour que Next.js les embarque
-        - env | grep -e RUNWAYML_API_SECRET >> .env.production || true
+        - env | grep -e RUNWAYML_API_SECRET -e ZOHO_SMTP_USER -e ZOHO_SMTP_PASS >> .env.production || true
         - npm run build
   artifacts:
     baseDirectory: .next

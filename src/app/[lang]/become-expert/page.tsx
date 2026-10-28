@@ -21,7 +21,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import styles from "./page.module.scss";
 import { Mail, Phone } from "lucide-react";
-import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -264,22 +263,18 @@ export default function BecomeExpert() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Replace these with your actual EmailJS credentials
-      const result = await emailjs.sendForm(
-        "YOUR_SERVICE_ID", // You'll get this from EmailJS
-        "YOUR_TEMPLATE_ID", // You'll get this from EmailJS
-        formRef.current!,
-        "YOUR_PUBLIC_KEY" // You'll get this from EmailJS
-      );
+      const res = await fetch("/api/become-expert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(formRef.current!))),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      if (result.text === "OK") {
-        setSubmitStatus({
-          type: "success",
-          message: "Votre message a été envoyé avec succès!",
-        });
-        // Reset form
-        formRef.current?.reset();
-      }
+      setSubmitStatus({
+        type: "success",
+        message: "Votre message a été envoyé avec succès!",
+      });
+      formRef.current?.reset();
     } catch (error) {
       setSubmitStatus({
         type: "error",
